@@ -1,0 +1,39 @@
+body {
+  text-align: center;
+  background-color: #faff93;
+  color: #574000;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.table {
+  margin: auto;
+  text-align: center;
+  background-color: #ffe9e9;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.cell img {
+  width: 25px;
+  height: auto;
+}
+
+.floor {
+  text-align: center;
+  background-color: #e49696;
+}
+
+.mine {
+  text-align: center;
+  background-color: #040404;
+}
+
+button {
+  text-align: center;
+  display: none;
+  margin: auto;
+}
