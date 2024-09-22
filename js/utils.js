@@ -1,4 +1,5 @@
 "use strict";
+/*
 
 function renderCell(location, value) {
   // Select the elCell and set the value
@@ -332,6 +333,7 @@ function handleKey(event) {
 }
 */
 
+/*
 // Modal JS:
 function openModal() {
   clearTimeout(gModalTimeoutId);
@@ -353,6 +355,7 @@ function closeModal() {
 
 function startStop(elBtnStart) {
   /* Toggle StartStop */
+/*
   if (gCurrQuestIdx === gQuests.length || gCurrQuestIdx === 0) {
     GstartStop = !GstartStop;
 
@@ -374,29 +377,30 @@ function start() {
   renderQuests();
   gCurrQuestIdx++;
 } /* Start */
-
+/*
 function stop() {
   clearInterval(x);
   GstartStop = !GstartStop;
 } /* Stop */
-
+/*
 var milisec = 0;
 var sec = 0; /* holds incrementing value */
+/*
 var min = 0;
 var hour = 0;
 
 /* Contains and outputs returned value of  function checkTime */
-
+/*
 var miliSecOut = 0;
 var secOut = 0;
 var minOut = 0;
 var hourOut = 0;
 
 /* Output variable End */
-
+/*
 function timer() {
   /* Main Timer */
-
+/*
   miliSecOut = checkTime(milisec);
   secOut = checkTime(sec);
   minOut = checkTime(min);
@@ -425,7 +429,7 @@ function timer() {
   document.getElementById("hour").innerHTML = hourOut;
 }
 /* Adds 0 when value is <10 */
-
+/*
 function checkTime(i) {
   if (i < 10) {
     i = "0" + i;
@@ -452,6 +456,7 @@ function reset() {
   renderQuests();
 }
 
+
 <body onload="init()">
   <div class="sky">
     <div class="header">
@@ -468,3 +473,4 @@ function reset() {
   </div>
   <script src="js/main.js "></script>
 </body>;
+*/

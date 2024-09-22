@@ -27,9 +27,9 @@ function buildBoard(size) {
       };
     }
   }
-  //place the mines
-  board[0][0].isMine = true;
-  board[2][3].isMine = true;
+  createMines(board);
+  var negs = setMinesNegsCount(board, 0, 1);
+  console.log(`number of negs: ${negs}`);
   return board;
 }
 
@@ -41,7 +41,8 @@ function renderBoard(board) {
       const cell = board[i][j];
       var className = `cell-${i}-${j} floor`;
       strHTML += `<td class="cell ${className}" onclick="onCellClicked(elCell,${i},${j})">`;
-      if (cell.isMine) className += ` mine`;
+
+      if (cell.isMine) strHTML += MINE_IMG;
 
       strHTML += "</td>";
     }
@@ -50,4 +51,31 @@ function renderBoard(board) {
   elContainer.innerHTML = strHTML;
 }
 
-function setMinesNegsCount(board) {}
+function createMines(board) {
+  board[0][0].isMine = true;
+  board[2][3].isMine = true;
+}
+
+function setMinesNegsCount(mat, rowIdx, colIdx) {
+  var counter = 0;
+
+  for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
+    if (i < 0 || i >= mat.length) continue;
+
+    for (var j = colIdx - 1; j <= colIdx + 1; j++) {
+      if (j < 0 || j >= mat[i].length) continue;
+      if (i === rowIdx && j === colIdx) continue;
+
+      if (mat[i][j].isMine) {
+        mat[i][j].minesAroundCount++;
+        counter++;
+        console.log(mat[i][j]);
+      }
+    }
+  }
+  return counter;
+}
+
+// function onCellClicked(elCell, i, j) {
+//   if
+// }
