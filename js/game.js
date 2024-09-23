@@ -27,9 +27,16 @@ function buildBoard(size) {
       };
     }
   }
+
   createMines(board);
-  var negs = setMinesNegsCount(board, 0, 1);
-  console.log(`number of negs: ${negs}`);
+
+  //update minesAroundCount
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      board[i][j].minesAroundCount = setMinesNegsCount(board, i, j);
+      console.log(`i: ${i}, j: ${j}`, board[i][j]);
+    }
+  }
   return board;
 }
 
@@ -40,12 +47,14 @@ function renderBoard(board) {
     for (var j = 0; j < board[0].length; j++) {
       const cell = board[i][j];
       var className = `cell-${i}-${j} floor`;
-      strHTML += `<td class="cell ${className}" onclick="onCellClicked(elCell,${i},${j})">`;
+      // var elCell = document.querySelector(`.${className}`);
+      strHTML += `<td class="cell ${className}" onclick="onCellClicked(this,${i},${j})">`;
 
       if (cell.isMine) strHTML += MINE_IMG;
 
       strHTML += "</td>";
     }
+    strHTML += "</tr>";
   }
   const elContainer = document.querySelector(".board");
   elContainer.innerHTML = strHTML;
@@ -57,7 +66,7 @@ function createMines(board) {
 }
 
 function setMinesNegsCount(mat, rowIdx, colIdx) {
-  var counter = 0;
+  var minesCounter = 0;
 
   for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
     if (i < 0 || i >= mat.length) continue;
@@ -67,15 +76,38 @@ function setMinesNegsCount(mat, rowIdx, colIdx) {
       if (i === rowIdx && j === colIdx) continue;
 
       if (mat[i][j].isMine) {
-        mat[i][j].minesAroundCount++;
-        counter++;
-        console.log(mat[i][j]);
+        minesCounter++;
       }
     }
   }
-  return counter;
+  mat[rowIdx][colIdx].minesAroundCount = minesCounter;
+  return minesCounter;
 }
 
-// function onCellClicked(elCell, i, j) {
-//   if
-// }
+function onCellClicked(elCell, i, j) {
+  console.log(`you clicked on i: ${i}, j: ${j}`);
+  let currCell = gBoard[i][j];
+
+  if (currCell.isShown) return;
+
+  if (currCell.isMine) {
+    console.log("UH OH...");
+    //update the MODEL
+    currCell.isShown = true;
+    gLevel.MINES--;
+
+    //update the DOM
+    //renderCell();
+  }
+
+  if (!currCell.isMine) {
+    //update the MODEL
+    currCell.isShown = true;
+
+    //update the DOM
+    var negsNum = setMinesNegsCount(gBoard, i, j);
+    elCell.innerText = negsNum;
+    elCell.classList.add("shown");
+  }
+  console.log(`the current cell: ${gBoard[i][j]}`);
+}

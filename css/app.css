@@ -27,9 +27,9 @@ body {
   background-color: #e49696;
 }
 
-.mine {
+.shown {
   text-align: center;
-  background-color: #040404;
+  background-color: #efd7d7;
 }
 
 button {
