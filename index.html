@@ -10,7 +10,20 @@
 
   <body onload="onInit()">
     <h1>WELCOME TO MINE SWEEPER</h1>
-    <h2>let's go...</h2>
+
+    <div>
+      <h3>Choose your difficulty:</h3>
+      <button onclick="onSetDifficulty(4, 2)">Beginner (4x4)</button>
+      <button onclick="onSetDifficulty(8, 12)">Medium (8x8)</button>
+      <button onclick="onSetDifficulty(12, 30)">Expert (12x12)</button>
+    </div>
+
+    <div>
+      <span class="life1"></span>
+      <span class="life2"></span>
+      <span class="life3"></span>
+    </div>
+
     <table class="table">
       <tbody class="board"></tbody>
     </table>

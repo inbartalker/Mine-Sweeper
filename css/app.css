@@ -32,8 +32,27 @@ body {
   background-color: #efd7d7;
 }
 
+.bombed {
+  text-align: center;
+  background-color: #970d0d;
+}
+
+.lives {
+  text-align: center;
+  margin: auto;
+  width: 30px;
+  height: auto;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.mode {
+  text-align: center;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
 button {
   text-align: center;
-  display: none;
   margin: auto;
 }
